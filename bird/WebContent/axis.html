@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+    <script src="js/world.js"></script>
+    <script src="js/china.js"></script>
+</header>
+<body>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:600px;"></div>
+</body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+        	    title: {
+        	        text: '已知越冬黑脸琵鹭数量'
+        	    },
+        	    tooltip : {
+        	        trigger: 'axis'
+        	    },
+        	    legend: {
+        	        data:['深圳','香港','日本','台湾','全球']
+        	    },
+        	    toolbox: {
+        	        feature: {
+        	            saveAsImage: {}
+        	        }
+        	    },
+        	    grid: {
+        	        left: '3%',
+        	        right: '4%',
+        	        bottom: '3%',
+        	        containLabel: true
+        	    },
+        	    xAxis : [
+        	        {
+        	            type : 'category',
+        	            boundaryGap : false,
+        	            data : ['2001','2005','2010','2011','2012','2013','2014','2015']
+        	        }
+        	    ],
+        	    yAxis : [
+        	        {
+        	            type : 'value'
+        	        }
+        	    ],
+        	    series : [
+        	        {
+        	            name:'深圳',
+        	            type:'line',
+        	            stack: '总量',
+        	            areaStyle: {normal: {}},
+        	            data:[42,39,33,25,36,29,30,48
+
+        	]
+        	        },
+        	        {
+        	            name:'香港',
+        	            type:'line',
+        	            stack: '总量',
+        	            areaStyle: {normal: {}},
+        	            data:[135,272,429,386,357,322,222,363
+        	]
+        	        },
+        	        {
+        	            name:'日本',
+        	            type:'line',
+        	            stack: '总量',
+        	            areaStyle: {normal: {}},
+        	            data:[87,103,258,270,284,277,350,371
+        	]
+        	        },
+        	        {
+        	            name:'台湾',
+        	            type:'line',
+        	            stack: '总量',
+        	            areaStyle: {normal: {}},
+        	            data:[427,757,1280,834,1562,1624,1659,2034
+        	]
+        	        },
+        	        {
+        	            name:'全球',
+        	            type:'line',
+        	            stack: '总量',
+        	            label: {
+        	                normal: {
+        	                    show: true,
+        	                    position: 'top'
+        	                }
+        	            },
+        	            areaStyle: {normal: {}},
+        	            data:[828,1475,2347,1839,2693,2725,2726,3272]
+        	        }
+        	    ]
+        	};
+
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+</html>

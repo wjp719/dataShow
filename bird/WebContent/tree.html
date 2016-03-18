@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<meta charset="utf-8">
+	<!-- 引入 ECharts 文件 -->
+	<script src="js/echarts.min.js"></script>
+	<script src="js/world.js"></script>
+	<script src="js/china.js"></script>
+</header>
+<body>
+	<!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+	<div id="main" style="width: 800px; height: 600px;"></div>
+</body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var data = [
+{name: '泉州湾河口湿地', value: 70.09},
+{name: '漳江口红树林', value: 23.6},
+{name: '龙海九龙江河口湿地', value: 43.6},
+{name: '龙海九龙江口红树林', value: 4.2},
+{name: '环三都澳红树林', value: 12.06},
+{name: '大鹏半岛', value: 146.22},
+{name: '内伶仃岛－福田', value: 8.15},
+{name: '淇澳－担杆岛', value: 73.63},
+{name: '镇海湾红树林', value: 15},
+{name: '恩平红树林', value: 7},
+{name: '湛江红树林', value: 193},
+{name: '苍头、南山红树林', value: 3},
+{name: '茂港红树林', value: 8},
+{name: '电白红树林', value: 19.5},
+{name: '惠东红树林', value: 5.33},
+{name: '南万红椎林', value: 24.86},
+{name: '岗列对岸三角洲', value: 0.4},
+{name: '平冈红树林湿地', value: 8},
+{name: '程村豪光红树林', value: 10},
+{name: '山口红树林', value: 80},
+{name: '北仑河口', value: 30},
+{name: '茅尾海红树林', value: 27.84},
+{name: '东寨港', value: 33.37},
+{name: '三亚河红树林', value: 3.44},
+{name: '铁炉港红树林', value: 2.92},
+{name: '亚龙湾青梅港', value: 1.56},
+{name: '新英湾红树林', value: 1.15},
+{name: '清澜港', value: 29.48},
+{name: '花场湾沿岸红树林', value: 1.5},
+{name: '彩桥红树林', value: 3.5},
+{name: '淡水河口红树林', value: 0.76},
+{name: '关渡', value: 0.55},
+{name: '米埔红树林', value: 27}
+               ];
+               var geoCoordMap = {
+            		   '泉州湾河口湿地':[118.68,24.88],
+            		   '漳江口红树林':[118.02,24.20],
+            		   '龙海九龙江河口湿地':[117.82,24.45],
+            		   '龙海九龙江口红树林':[117.82,24.45],
+            		   '环三都澳红树林':[119.53,26.67],
+            		   '大鹏半岛':[114.49,22.55],
+            		   '内伶仃岛－福田':[113.81,22.41],
+            		   '淇澳－担杆岛':[113.63,22.40],
+            		   '镇海湾红树林':[112.79,22.25],
+            		   '恩平红树林':[112.31,22.18],
+            		   '湛江红树林':[109.74,21.61],
+            		   '苍头、南山红树林':[110.18,20.33],
+            		   '茂港红树林':[110.93,21.66],
+            		   '电白红树林':[111.01,21.51],
+            		   '惠东红树林':[114.54,22.74],
+            		   '南万红椎林':[115.52,23.35],
+            		   '岗列对岸三角洲':[111.96,21.86],
+            		   '平冈红树林湿地':[111.90,21.76],
+            		   '程村豪光红树林':[111.62,21.75],
+            		   '山口红树林':[109.74,21.61],
+            		   '北仑河口':[108.33,22.82],
+            		   '茅尾海红树林':[108.54,21.82],
+            		   '东寨港':[110.37,20.03],
+            		   '三亚河红树林':[109.51,18.25],
+            		   '铁炉港红树林':[109.69,18.27],
+            		   '亚龙湾青梅港':[109.64,18.21],
+            		   '新英湾红树林':[109.22,19.75],
+            		   '清澜港':[110.83,19.52],
+            		   '花场湾沿岸红树林':[110.01,19.74],
+            		   '彩桥红树林':[109.69,19.91],
+            		   '淡水河口红树林':[121.44,25.18],
+            		   '关渡':[121.47,25.11],
+            		   '米埔红树林':[114.01,22.53]
+               };
+
+               var convertData = function (data) {
+                   var res = [];
+                   for (var i = 0; i < data.length; i++) {
+                       var geoCoord = geoCoordMap[data[i].name];
+                       if (geoCoord) {
+                           res.push({
+                               name: data[i].name,
+                               value: geoCoord.concat(data[i].value)
+                           });
+                       }
+                   }
+                   return res;
+               };
+
+               option = {
+                   backgroundColor: '#404a59',
+                   title: {
+                       text: '全国红树林自然保护区名录（截至2011年底）',
+                       subtext: '',
+                       sublink: '',
+                       left: 'center',
+                       textStyle: {
+                           color: '#fff'
+                       }
+                   },
+                   tooltip : {
+                       trigger: 'item'
+                   },
+                  
+                   legend: {
+                       orient: 'vertical',
+                       y: 'bottom',
+                       x:'right',
+                       data:['pm2.5'],
+                       textStyle: {
+                           color: '#fff'
+                       }
+                   },
+                   geo: {
+                       map: 'china',
+                       label: {
+                           emphasis: {
+                               show: false
+                           }
+                       },
+                       mapLocation:{"x": "right",
+                    	    "y": "right"},
+                       roam: true,
+                       itemStyle: {
+                           normal: {
+                               areaColor: '#323c48',
+                               borderColor: '#111'
+                           },
+                           emphasis: {
+                               areaColor: '#2a333d'
+                           }
+                       }
+                   },
+                   series : [
+                      
+                       {
+                           name: '红树林',
+                           type: 'effectScatter',
+                           coordinateSystem: 'geo',
+                           data: convertData(data.sort(function (a, b) {
+                               return b.value - a.value;
+                           }).slice(0, 33)),
+                           symbolSize: function (val) {
+                               return val[2] / 10;
+                           },
+                           showEffectOn: 'render',
+                           rippleEffect: {
+                               brushType: 'stroke'
+                           },
+                           hoverAnimation: true,
+                           label: {
+                               normal: {
+                                   formatter: '{b}',
+                                   position: 'right',
+                                   show: true
+                               }
+                           },
+                           itemStyle: {
+                               normal: {
+                                   color: '#f4e925',
+                                   shadowBlur: 10,
+                                   shadowColor: '#333'
+                               }
+                           },
+                           zlevel: 1
+                       }
+                   ]
+               };
+
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+</html>

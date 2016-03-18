@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<meta charset="utf-8">
+	<!-- 引入 ECharts 文件 -->
+	<script src="js/echarts.min.js"></script>
+	<script src="js/world.js"></script>
+	<script src="js/china.js"></script>
+</header>
+<body>
+	<!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+	<div id="main" style="width: 800px; height: 600px;"></div>
+</body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+        	    title: {
+        	        text: '2011-2015年福田红树林黑脸琵鹭变化状况',
+        	    },
+        	    tooltip: {
+        	        trigger: 'axis'
+        	    },
+        	    toolbox: {
+        	        feature: {
+        	            dataView: {show: true, readOnly: false},
+        	            magicType: {show: true, type: ['line', 'bar']},
+        	            restore: {show: true},
+        	            saveAsImage: {show: true}
+        	        }
+        	    },
+        	    legend: {
+        	        data:['蒸发量','降水量','平均温度']
+        	    },
+        	    xAxis: [
+        	        {
+        	            type: 'category',
+        	            data: ['2001年','2002年','2003年','2004年','2005年','2006年','2007年','2008年','2009年','2010年','2011年','2012年','2013年','2014年','2015年']
+        	        }
+        	    ],
+        	    yAxis: [
+        	        {
+        	            type: 'value',
+        	            name: '数量',
+        	            min: 0,
+        	            max: 70,
+        	            interval: 10,
+        	            axisLabel: {
+        	                formatter: '{value} 只 '
+        	            }
+        	        },
+        	        {
+        	            type: 'value',
+        	            name: '变化趋势',
+        	            min: 0,
+        	            max: 70,
+        	            interval: 10,
+        	            axisLabel: {
+        	                formatter: '{value} 只'
+        	            }
+        	        }
+        	    ],
+        	    series: [
+        	        {
+        	          
+        	            name:'黑脸琵鹭数量',
+        	            type:'bar',
+        	            data:[42, 3,24, 5, 39, 50, 36, 38, 62, 33, 25, 36, 29,30,48]
+        	        },
+        	        {
+        	            name:'黑脸琵鹭变化趋势',
+        	            type:'line',
+        	            yAxisIndex: 1,
+        	            data:[42, 3,24, 5, 39, 50, 36, 38, 62, 33, 25, 36, 29,30,48]
+        	        }
+        	    ]
+        	};
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+</html>

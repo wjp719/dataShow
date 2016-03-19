@@ -48,7 +48,7 @@ var stop=function(){
 };
 var treeMap=function(){
 	// 基于准备好的dom，初始化echarts实例
-	var h=window.screen.height;
+	var h=window.screen.height*0.9;
 	var w=window.screen.width;
 	$('#tree').css("width",w);
 	$('#tree').css("height",h);
@@ -188,7 +188,8 @@ var treeMap=function(){
                    text: '全国红树林自然保护区名录（截至2011年底）',
                    subtext: '数据来源：中华人民共和国环境保护部自然生态保护司公布的全国自然保护区名录',
                    sublink: '',
-                   left: 'center',
+                   top:'bottom',
+   		        left:'center',
                    zlevel:3,
                    textStyle: {
                        color: '#fff'
@@ -221,7 +222,7 @@ var treeMap=function(){
                    },
                    mapLocation:{"x": "right",
                 	    "y": "right"},
-                   roam: true,
+                   roam: false,
                    itemStyle: {
                        normal: {
                            areaColor: '#323c48',
@@ -304,7 +305,7 @@ var treeMap=function(){
     myChart.setOption(option);
 };
 var migrationMap=function(){
-	var h=window.screen.height;
+	var h=window.screen.height*0.9;
 	var w=window.screen.width;
 	$('#migration').css("width",w);
 	$('#migration').css("height",h);
@@ -428,8 +429,9 @@ var migrationMap=function(){
      	    
      	    title : {
      	        text: '模拟迁徙',
-     	        subtext: '数据纯属虚构',
-     	        left: 'center',
+     	        subtext: '',
+		        top:'bottom',
+		        left:'center',
      	        textStyle : {
      	            color: '#fff'
      	        }
@@ -459,7 +461,7 @@ var migrationMap=function(){
      	            }
      	        },
      	        
-     	        roam: true,
+     	        roam: false,
      	        itemStyle: {
      	            normal: {
      	                areaColor: '#323c48',
@@ -478,14 +480,16 @@ var migrationMap=function(){
 };
 var birdMap=function(){
 	// 基于准备好的dom，初始化echarts实例
-	var h=window.screen.height;
-	var w=window.screen.width;
+	var h=window.screen.height*0.6;
+	var w=window.screen.width*0.6;
 	$('#bird').css("width",w);
 	$('#bird').css("height",h);
 	var myChart = echarts.init(document.getElementById('bird'));
 	option = {
 		    title: {
-		        text: '2011-2015年福田红树林黑脸琵鹭变化状况',
+		        text: '深圳福田红树林黑脸琵鹭数量',
+		        top:'bottom',
+		        left:'center'
 		    },
 		    tooltip: {
 		        trigger: 'axis'
@@ -499,7 +503,9 @@ var birdMap=function(){
 		        }
 		    },
 		    legend: {
-		        data:['蒸发量','降水量','平均温度']
+		        data:['蒸发量','降水量','平均温度'],
+		        top:'40%',
+		        left:'right'
 		    },
 		    xAxis: [
 		        {
@@ -512,6 +518,7 @@ var birdMap=function(){
 		            type: 'value',
 		            name: '数量',
 		            min: 0,
+		          
 		            max: 70,
 		            interval: 10,
 		            axisLabel: {
@@ -532,14 +539,16 @@ var birdMap=function(){
     myChart.setOption(option);
 };
 var zhexianMap=function(){
-	var h=window.screen.height;
-	var w=window.screen.width;
+	var h=window.screen.height*0.6;
+	var w=window.screen.width*0.6;
 	$('#zhexian').css("width",w);
 	$('#zhexian').css("height",h);
 	var myChart = echarts.init(document.getElementById('zhexian'));
 	option = {
 		    title: {
-		        text: '已知越冬黑脸琵鹭数量'
+		        text: '全球已知越冬黑脸琵鹭数量',
+		        top:'20%',
+		        left:'center'
 		    },
 		    tooltip : {
 		        trigger: 'axis'
@@ -629,9 +638,10 @@ var binMap=function(){
 	var myChart = echarts.init(document.getElementById('bin'));
 	option = {
 		    title : {
-		        text: '2015年已知越冬黑脸琵鹭数量',
-		        subtext: '香港观鸟协会',
-		        x:'center'
+		        text: '各地区黑脸琵鹭比例',
+		        subtext: '',
+		        top:'20%',
+		        left:'center'
 		    },
 		    tooltip : {
 		        trigger: 'item',
@@ -640,6 +650,7 @@ var binMap=function(){
 		    legend: {
 		        orient: 'vertical',
 		        left: 'left',
+		        top:'20%',
 		        data: ['深圳','香港','台湾','日本','中国大陆其他地区','全球其他地区']
 		    },
 		    series : [

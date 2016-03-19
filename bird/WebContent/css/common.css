@@ -23,6 +23,7 @@ li{list-style:none;}
 .video-container{ position:relative;float:left; width:100%; overflow:hidden; z-index:2;}
 .video-caption {position:absolute;  bottom:30%; z-index:10; width:300px; color:white;font:normal 18px/30px Helvetica, Tahoma, Arial,  "Microsoft YaHei", "微软雅黑",STXihei, "华文细黑", sans-serif; text-shadow:0 1px 2px #000;}
 .video-caption1 {position:absolute;  bottom:50%; z-index:10; width:300px; color:white;font:normal 18px/30px Helvetica, Tahoma, Arial,  "Microsoft YaHei", "微软雅黑",STXihei, "华文细黑", sans-serif; text-shadow:0 1px 2px #000;}
+.video-caption2 {position:absolute;  bottom:10%; z-index:10; width:300px; color:white;font:normal 18px/30px Helvetica, Tahoma, Arial,  "Microsoft YaHei", "微软雅黑",STXihei, "华文细黑", sans-serif; text-shadow:0 1px 2px #000;}
 
 .head-cap{bottom:43%}
 .headline{font:bolder 40px/2 Helvetica, Tahoma, Arial,  "Microsoft YaHei", "微软雅黑",STXihei, "华文细黑", sans-serif;}
